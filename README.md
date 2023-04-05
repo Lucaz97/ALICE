@@ -16,4 +16,6 @@ In the test folder create a makefile with the following structure:
 Before running make you should export the path to openfpga_flow to the environmtne variable "OPENFPGA_FLOW_PATH":
 
     export OPENFPGA_FLOW_PATH=path/to/OpenFPGA/openfpga_flow
+
+    in OpenFGPA home : export OPENFPGA_FLOW_PATH=$PWD/openfpga_flow
     
