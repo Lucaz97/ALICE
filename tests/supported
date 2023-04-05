@@ -1,0 +1,13 @@
+CEP
+aes (hard) NOT SUPPORTED
+des3 (hard)
+fir (easy)
+iir (easy)
+sha (medium)
+
+IWLS05
+sasc
+usb
+
+OpenROAD
+gcd

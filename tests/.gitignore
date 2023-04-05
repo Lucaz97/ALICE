@@ -1,0 +1,14 @@
+*verify.tcl
+*_wrap.v
+*_obf.v
+work
+formality*
+fm_shell_command*
+FM_WORK*
+obf_*
+*.log
+out
+__pycache__
+parser.*
+parsetab.py
+parser.out

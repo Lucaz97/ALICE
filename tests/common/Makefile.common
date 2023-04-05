@@ -1,0 +1,14 @@
+FILELIST ?= file_list.f
+OPT      ?= 
+DIR      ?= work
+
+all: obfuscation
+
+obfuscation:
+	python3 ../../../../src/rtl_redaction.py -f ${FILELIST} --top ${TOP} -o ${DIR}
+
+clean:
+	rm -rf *.txt *.py *.out *~ *.log fm_shell* formality*
+
+distclean: clean
+	rm -rf ${DIR} FM_WORK
