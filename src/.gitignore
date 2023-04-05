@@ -3,6 +3,5 @@ builds
 dist
 work
 __pycache__
-parser.*
 parsetab.py
 parser.out
