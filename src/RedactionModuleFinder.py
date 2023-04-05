@@ -27,12 +27,7 @@ class RedactionModuleFinder:
 
     def find(self):
         # strategy pattern
-        if self.cfg.strategy == "output":
-            finder = Finder(ConcreteSelectionAlgorithmChooseByOutput(self.design_info.analyzer,
-                                                                     self.cfg.signal_name, self.cfg.topmodule))
-        elif self.cfg.strategy == "io_pins":
-            finder = Finder(ConcreteSelectionAlgorithmChooseByNumberIo(self.design_info.instances.keys(), self.cfg.max_io_num, self.design_info))
-        elif self.cfg.strategy == "io+out+rank":
+        if self.cfg.strategy == "io+out+rank":
 
             instances = []
             self.cfg.logInfo("FIRST FILTER: output influences")
@@ -76,11 +71,9 @@ class RedactionModuleFinder:
             for instance, count in counter[: n_passing]:
                 passing_instances.append(self.design_info.getInstanceByName(instance))
 
-            self.cfg.logInfo("Instances after output filter:" + str(passing_instances))
+            self.cfg.logInfo("Instances after module filter:" + str(passing_instances))
         
             finder = Finder(ConcreteSelectionAlgorithmChooseByNumberIo(passing_instances, self.cfg.max_io_num, self.design_info))
-        else:
-            finder = Finder(ConcreteSelectionAlgorithmChooseBySharing(self.design_info.analyzer, self.cfg.topmodule))
         self.redaction_instances = finder.apply()
         if self.redaction_instances != {}:
             self.empty = False
@@ -158,7 +151,7 @@ class ConcreteSelectionAlgorithmChooseByModule(SelectionAlgorithm):
         return choose_by_module(self.analyzer, self.module_name, self.top_name, self.exclude)
 
 
-
+# not used as of now
 class ConcreteSelectionAlgorithmChooseBySharing(SelectionAlgorithm):
     def __init__(self, analyzer, top_name):
         super().__init__()

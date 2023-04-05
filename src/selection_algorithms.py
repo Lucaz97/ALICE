@@ -70,7 +70,7 @@ def choose_by_output(analyzer, output_name, top_name, exclude):
 
     instance_module_dict_ordered = OrderedDict()
     for inst_name in instances_affecting_list:
-        if  not any((isntance_module_dict[inst_name].startswith(e) for e in exclude)):
+        if  not any((instance_module_dict[inst_name].startswith(e) for e in exclude)):
             instance_module_dict_ordered[inst_name] = instance_module_dict[inst_name]
     return instance_module_dict_ordered
 
