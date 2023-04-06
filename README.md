@@ -19,3 +19,7 @@ Before running make you should export the path to openfpga_flow to the environmt
 
     in OpenFGPA home : export OPENFPGA_FLOW_PATH=$PWD/openfpga_flow
     
+And the python interpreter for openfpga at OPENFPGA_PY_INT:
+    export OPENFPGA_PY_INT=path/to/python/env
+If you did not make a python environment for OpenFPGA, 
+    export OPENFPGA_PY_INT=python3

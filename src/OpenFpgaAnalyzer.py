@@ -16,7 +16,7 @@ class OpenFpgaAnalyzer:
 
     def run(self):
 
-        command = "/home/lcollini/.pyenv/shims/python3"
+        command = "${OPENFPGA_PY_INT}"
         command += " ${OPENFPGA_FLOW_PATH}/scripts/run_fpga_flow.py"
         command += " ${OPENFPGA_FLOW_PATH}/vpr_arch/k4_frac_N4_40nm.xml"
         #command += " ${OPENFPGA_FLOW_PATH}/vpr_arch/k4_frac_N4_tileable_40nm.xml"
