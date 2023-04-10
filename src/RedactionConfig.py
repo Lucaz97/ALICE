@@ -30,6 +30,9 @@ class RedactionConfig:
         # setup work dir
         os.makedirs(yaml_opt["out_dir"], exist_ok=True)
         self.target = yaml_opt["out_dir"]
+        self.vpr_arch = yaml_opt["vpr_arch"]
+        self.openfpga_arch = yaml_opt["openfpga_arch"]
+        
 
         # Change root logger level from WARNING (default) to NOTSET in order for all messages to be delegated.
         logging.getLogger().setLevel(logging.NOTSET)

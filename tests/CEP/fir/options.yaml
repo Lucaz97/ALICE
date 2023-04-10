@@ -7,9 +7,11 @@ max_fpga_num: '1'
 max_io_num: '96'
 method: io+module # or io+out+rank
 module_names:
-- FIR_filter_firBlock_left ## only for method io+module
+- src/FIR_filter_firBlock_left ## only for method io+module
 not_allowed_size: null
-out_dir: ../work
+out_dir: work
 rank: '1' # % of clusters to consider (0,1]
-signal_names: ../outfile # file with outputs to look for (only needed for method io+out+rakn)
+signal_names: outfile # file with outputs to look for (only needed for method io+out+rakn)
 topmodule: FIR_filter
+openfpga_arch: ${OPENFPGA_FLOW_PATH}/vpr_arch/k4_frac_N4_40nm.xml
+vpr_arch: ${OPENFPGA_FLOW_PATH}/vpr_arch/k4_frac_N4_40nm.xml
