@@ -28,52 +28,52 @@ def cmd_parsing():
         More than one redaction methods are available.
         """
     optparser = OptionParser(usage=help_text)
-    #optparser.add_option("-f", "--yaml_opt", dest="yaml_file", action="store", default="options.yaml", help="Option file in YAML format.")
-    optparser.add_option("-I", "--include", dest="include", action="append",
-                         default=[], help="Include path")
-    optparser.add_option("-D", dest="define", action="append",
-                         default=[], help="Macro Definition")
-    optparser.add_option("-t", "--top", dest="topmodule",
-                         default="TOP", help="Top module's name, default: TOP")
-    '''
-    optparser.add_option("--nobind", action="store_true", dest="nobind",
-                         default=False, help="No binding traversal, Default=False")
-    optparser.add_option("--noreorder", action="store_true", dest="noreorder",
-                         default=False, help="No reordering of binding dataflow, Default=False")
-    '''
-    REDACTION_METHODS = ["io+out+rank", "io+module"]
-    choices_m = REDACTION_METHODS
-    optparser.add_option("-m", "--method", dest="method",
-                         default="io+out+rank", choices=choices_m, help="Redaction module's method, default: sharing; "
-                                                                    "'output' = given a certain output signal, "
-                                                                    "looks for module which impact on it; "
-                                                                    "'sharing' = looks for module which impact "
-                                                                    "the most on other modules"
-                                                                    "'io_pin' = max i/o pin constraint"
-                                                                    "'io+out+rank'  = max pin, output signals of interests, rank and filter for best"
-                                                                    "'io+module' = max pin and module of interest")
-    optparser.add_option("-n", "--signal_name", dest="signal_names",
-                         help="File with output signal to look for dependencies, when method 'output' is selected")
-    optparser.add_option("-p", "--max_io_num", dest="max_io_num",
-                         help="Max number of io which is acceptable for redacted fpga")
-    optparser.add_option("-s", "--size", dest="not_allowed_size", action="append", type="int",
-                         help="Allowed size of redacted fpga")
-    optparser.add_option("-f", "--max_fpga_num", dest="max_fpga_num",
-                         help="Max number of fpgas which is acceptable for redacted fpga", default=1)
-    optparser.add_option("-r", "--rank", dest="rank",
-                         help="Percentage of ranked modules to consider [0, 1]", default=1)
-    optparser.add_option("--dir", dest="out_dir", help="Defines the output directory, default = work", default="../work")
-    optparser.add_option("-e", "--exclude", dest="exclude_modules", action="append",
-                         help="prefixes to exclude", default=[])
-    optparser.add_option("-M", "--mod", dest="module_names", action="append",
-                         help="relevant modules (for io+module)", default=[])
+    optparser.add_option("-f", "--yaml_opt", dest="yaml_file", action="store", default="options.yaml", help="Option file in YAML format.")
+    # optparser.add_option("-I", "--include", dest="include", action="append",
+    #                      default=[], help="Include path")
+    # optparser.add_option("-D", dest="define", action="append",
+    #                      default=[], help="Macro Definition")
+    # optparser.add_option("-t", "--top", dest="topmodule",
+    #                      default="TOP", help="Top module's name, default: TOP")
+    # '''
+    # optparser.add_option("--nobind", action="store_true", dest="nobind",
+    #                      default=False, help="No binding traversal, Default=False")
+    # optparser.add_option("--noreorder", action="store_true", dest="noreorder",
+    #                      default=False, help="No reordering of binding dataflow, Default=False")
+    # '''
+    # REDACTION_METHODS = ["io+out+rank", "io+module"]
+    # choices_m = REDACTION_METHODS
+    # optparser.add_option("-m", "--method", dest="method",
+    #                      default="io+out+rank", choices=choices_m, help="Redaction module's method, default: sharing; "
+    #                                                                 "'output' = given a certain output signal, "
+    #                                                                 "looks for module which impact on it; "
+    #                                                                 "'sharing' = looks for module which impact "
+    #                                                                 "the most on other modules"
+    #                                                                 "'io_pin' = max i/o pin constraint"
+    #                                                                 "'io+out+rank'  = max pin, output signals of interests, rank and filter for best"
+    #                                                                 "'io+module' = max pin and module of interest")
+    # optparser.add_option("-n", "--signal_name", dest="signal_names",
+    #                      help="File with output signal to look for dependencies, when method 'output' is selected")
+    # optparser.add_option("-p", "--max_io_num", dest="max_io_num",
+    #                      help="Max number of io which is acceptable for redacted fpga")
+    # optparser.add_option("-s", "--size", dest="not_allowed_size", action="append", type="int",
+    #                      help="Allowed size of redacted fpga")
+    # optparser.add_option("-f", "--max_fpga_num", dest="max_fpga_num",
+    #                      help="Max number of fpgas which is acceptable for redacted fpga", default=1)
+    # optparser.add_option("-r", "--rank", dest="rank",
+    #                      help="Percentage of ranked modules to consider [0, 1]", default=1)
+    # optparser.add_option("--dir", dest="out_dir", help="Defines the output directory, default = work", default="../work")
+    # optparser.add_option("-e", "--exclude", dest="exclude_modules", action="append",
+    #                      help="prefixes to exclude", default=[])
+    # optparser.add_option("-M", "--mod", dest="module_names", action="append",
+    #                      help="relevant modules (for io+module)", default=[])
     
     (options, args) = optparser.parse_args()
 
     # to convert old make files 
-    stream = open('../options.yaml', 'w')
-    yaml.dump(options, stream)
-    quit()
+    # stream = open('../options.yaml', 'w')
+    # yaml.dump(options, stream)
+    # quit()
 
 
     if not os.path.exists(options.yaml_file):
