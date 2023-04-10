@@ -1,0 +1,25 @@
+!!python/object:optparse.Values
+define: []
+exclude_modules: []
+include: []
+file_list: 
+- crp.v
+- des3.v
+- key_sel3.v
+- sbox1.v
+- sbox2.v
+- sbox3.v
+- sbox4.v
+- sbox5.v
+- sbox6.v-
+- sbox7.v
+- sbox8.v
+max_fpga_num: 1
+max_io_num: '96'
+method: io+out+rank
+module_names: []
+not_allowed_size: null
+out_dir: ../work
+rank: '1'
+signal_names: ../outfile
+topmodule: des3

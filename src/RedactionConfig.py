@@ -4,33 +4,32 @@ import logging.handlers
 import sys
 class RedactionConfig:
 
-    def __init__(self, options, file_list):
-        self.topmodule = options.topmodule
-        self.include = options.include
-        self.define = options.define
-        self.strategy = options.method
+    def __init__(self, yaml_opt, file_list):
+        self.topmodule = yaml_opt["topmodule"]
+        self.include = yaml_opt["include"]
+        self.define = yaml_opt["define"]
+        self.strategy = yaml_opt["method"]
         self.not_allowed_size = []
-        self.exclude_modules = options.exclude_modules
-        if options.not_allowed_size:
-            self.not_allowed_size = options.not_allowed_size
+        self.exclude_modules = yaml_opt["exclude_modules"]
+        if yaml_opt["not_allowed_size"]:
+            self.not_allowed_size = yaml_opt["not_allowed_size"]
         else:
             self.not_allowed_size.append(4)
-        self.module_names = options.module_names
+        self.module_names = yaml_opt["module_names"]
         self.signal_names = []
-        if options.signal_names:
-            with open(options.signal_names, "r") as f:
+        if yaml_opt["signal_names"]:
+            with open(yaml_opt["signal_names"], "r") as f:
                 for line in f:
                     self.signal_names.append(line if line[-1 ] != '\n' else line[:-1])
                 
-        self.max_io_num = int(options.max_io_num) if options.max_io_num is not None else None
+        self.max_io_num = int(yaml_opt["max_io_num"]) if yaml_opt["max_io_num"] is not None else None
         self.file_list = file_list
-        self.max_fpga_num = int(options.max_fpga_num) if options.max_fpga_num is not None else None
+        self.max_fpga_num = int(yaml_opt["max_fpga_num"]) if yaml_opt["max_fpga_num"] is not None else None
         self.max_instances = 30
-        self.rank = float(options.rank) if options.rank is not None else None
+        self.rank = float(yaml_opt["rank"]) if yaml_opt["rank"] is not None else None
         # setup work dir
-        #os.mkdir(options.out_dir)
-        os.makedirs(options.out_dir, exist_ok=True)
-        self.target = options.out_dir
+        os.makedirs(yaml_opt["out_dir"], exist_ok=True)
+        self.target = yaml_opt["out_dir"]
 
         # Change root logger level from WARNING (default) to NOTSET in order for all messages to be delegated.
         logging.getLogger().setLevel(logging.NOTSET)

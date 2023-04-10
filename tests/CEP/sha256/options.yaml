@@ -1,0 +1,16 @@
+!!python/object:optparse.Values
+define: []
+exclude_modules: []
+include: []
+file_list:
+- sha256.v
+- sha256_k_constants.v 
+max_fpga_num: '2'
+max_io_num: '96'
+method: io+out+rank
+module_names: []
+not_allowed_size: null
+out_dir: ../work
+rank: '1'
+signal_names: ../outfile
+topmodule: sha256

@@ -8,6 +8,7 @@ import pathlib
 from optparse import OptionParser
 import os.path
 from xml.dom import minidom
+import yaml
 
 from RedactionModuleFinder import RedactionModuleFinder
 import pyverilog.vparser.ast as vast
@@ -27,6 +28,7 @@ def cmd_parsing():
         More than one redaction methods are available.
         """
     optparser = OptionParser(usage=help_text)
+    #optparser.add_option("-f", "--yaml_opt", dest="yaml_file", action="store", default="options.yaml", help="Option file in YAML format.")
     optparser.add_option("-I", "--include", dest="include", action="append",
                          default=[], help="Include path")
     optparser.add_option("-D", dest="define", action="append",
@@ -39,10 +41,10 @@ def cmd_parsing():
     optparser.add_option("--noreorder", action="store_true", dest="noreorder",
                          default=False, help="No reordering of binding dataflow, Default=False")
     '''
-    REDACTION_METHODS = ["output", "sharing", "io_pins", "io+out+rank", "io+module"]
+    REDACTION_METHODS = ["io+out+rank", "io+module"]
     choices_m = REDACTION_METHODS
     optparser.add_option("-m", "--method", dest="method",
-                         default="sharing", choices=choices_m, help="Redaction module's method, default: sharing; "
+                         default="io+out+rank", choices=choices_m, help="Redaction module's method, default: sharing; "
                                                                     "'output' = given a certain output signal, "
                                                                     "looks for module which impact on it; "
                                                                     "'sharing' = looks for module which impact "
@@ -67,26 +69,32 @@ def cmd_parsing():
                          help="relevant modules (for io+module)", default=[])
     
     (options, args) = optparser.parse_args()
-    if options.method == "output" and not options.signal_names:
-        raise ValueError("Error: No output signal name specified")
-    if options.method == "output" and not  os.path.exists(options.signal_names):
-        raise ValueError("Error: No output signal name file is not valid: " + options.signal_names)
-    if options.method == "io_pins" and not options.max_io_num:
-        raise ValueError("Error: max number of pins has not been provided")
-    if options.method == "io+out+rank":
-        if not options.signal_names:
+
+    # to convert old make files 
+    stream = open('../options.yaml', 'w')
+    yaml.dump(options, stream)
+    quit()
+
+
+    if not os.path.exists(options.yaml_file):
+        raise ValueError("Error: options file not found:", options.yaml_file)
+
+    stream = open(options.yaml_file, 'r')
+    yaml_opt = yaml.safe_load(stream)
+
+    if yaml_opt["method"] == "io+out+rank":
+        if not yaml_opt["signal_names"]:
             raise ValueError("Error: No output signal name specified")
-        if not os.path.exists(options.signal_names):
-            raise ValueError("Error: No output signal name file is not valid: " + options.signal_names)
-        if not options.max_io_num:
+        if not os.path.exists(yaml_opt["signal_names"]):
+            raise ValueError("Error: No output signal name file is not valid: " + yaml_opt["signal_names"])
+        if not yaml_opt["max_io_num"]:
             raise ValueError("Error: max number of pins has not been provided")
 
-
-    file_list = args
+    file_list = yaml_opt["file_list"]
     for f in file_list:
         if not os.path.exists(f):
             raise IOError("file not found: " + f)
-    return options, file_list
+    return yaml_opt, file_list
 
 
 def fix_instances(RedactionInfo, to_fix, mpm, p_it, new_assign, with_def):
@@ -474,13 +482,13 @@ def createOutputFiles(RedactionInfo, redaction_instances):
 
 def main():
     # Command line parsing
-    options, file_list = cmd_parsing()
-
+    yaml_opt, file_list = cmd_parsing()
+ 
     is_openfpga = os.getenv('OPENFPGA_FLOW_PATH', default=None)
     if not is_openfpga: raise Exception("OPENFPGA_FLOW_PATH variable not defined")
     print(is_openfpga)
 
-    cfg = RedactionConfig(options, file_list)
+    cfg = RedactionConfig(yaml_opt, file_list)
     redaction_info = RedactionInfo(cfg)
     # Find redaction modules candidates
     redaction_module_finder = RedactionModuleFinder(cfg, redaction_info)
@@ -500,10 +508,10 @@ def main():
     createOutputFiles(redaction_info, redaction_module_finder.redaction_instances)
 
     # find ./ -type f -exec sed -i -e 's/`default_nettype none/\/\/`default_nettype none/g' {} \;
-    os.system("find "+options.out_dir+"/OUT/ -type f -exec sed -i -e 's/`default_nettype none/\/\/`default_nettype none/g' {} \;")
+    os.system("find "+yaml_opt["out_dir"]+"/OUT/ -type f -exec sed -i -e 's/`default_nettype none/\/\/`default_nettype none/g' {} \;")
     # find work/OUT/ -type f -exec sed -i -e "s/(in === 1'bz)? \$random : ~in;/(in == 1'bz)? 1'b0 : ~in;/g" {} \;
-    os.system("find "+options.out_dir+"/OUT/ -type f -exec sed -i -e \"s/(in === 1'bz)? \$random : ~in;/ ~in;/g\" {} \;")
-    os.system("find "+options.out_dir+"/OUT/ -type f -exec sed -i -e \"s/(in === 1'bz)? \$random : in;/ in;/g\" {} \;")
+    os.system("find "+yaml_opt["out_dir"]+"/OUT/ -type f -exec sed -i -e \"s/(in === 1'bz)? \$random : ~in;/ ~in;/g\" {} \;")
+    os.system("find "+yaml_opt["out_dir"]+"/OUT/ -type f -exec sed -i -e \"s/(in === 1'bz)? \$random : in;/ in;/g\" {} \;")
 
 
 if __name__ == '__main__':

@@ -1,0 +1,15 @@
+define: [] # macro definitions
+exclude_modules: []
+include: [] # include path
+file_list: # list of files to parse
+- FIR_filter.v
+max_fpga_num: '1'
+max_io_num: '96'
+method: io+module # or io+out+rank
+module_names:
+- FIR_filter_firBlock_left ## only for method io+module
+not_allowed_size: null
+out_dir: ../work
+rank: '1' # % of clusters to consider (0,1]
+signal_names: ../outfile # file with outputs to look for (only needed for method io+out+rakn)
+topmodule: FIR_filter
