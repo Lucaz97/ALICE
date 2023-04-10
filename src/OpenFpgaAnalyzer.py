@@ -28,7 +28,7 @@ class OpenFpgaAnalyzer:
         #command += " --openfpga_arch_file ${OPENFPGA_FLOW_PATH}/openfpga_arch/k4_N4_40nm_cc_openfpga.xml"
         #command += " --openfpga_arch_file ${OPENFPGA_FLOW_PATH}/openfpga_arch/jb_k4_frac_N8.xml"
         #command += " --openfpga_shell_template ../../../../../common/OpenFPGA/myscript.openfpga"
-        command += " --openfpga_shell_template " + os.getcwd() + "/../../common/OpenFPGA/myscript.openfpga"
+        command += " --openfpga_shell_template " + "${RTL_REDACTION_PATH}/tests/common/OpenFPGA/myscript.openfpga"
         command += " --openfpga_sim_setting_file ${OPENFPGA_FLOW_PATH}/openfpga_simulation_settings/fixed_sim_openfpga.xml"
         #options_k6 = " ${{OPENFPGA_FLOW_PATH}}/vpr_arch/k6_frac_N10_40nm.xml  {1}/../src/*.v --top_module {0} --run_dir {1} --openfpga_arch_file ${{OPENFPGA_FLOW_PATH}}/openfpga_arch/k6_frac_N8_40nm_openfpga.xml --openfpga_shell_template ../../../../../common/OpenFPGA/myscript.openfpga --openfpga_sim_setting_file ${{OPENFPGA_FLOW_PATH}}/openfpga_simulation_settings/fixed_sim_openfpga.xml".format(self.top, self.target)
         #opt_test = " /home/chiara/Documenti/Sviluppo\ Python/out.xml  {1}/../src/*.v --top_module {0} --run_dir {1} --openfpga_arch_file ${{OPENFPGA_FLOW_PATH}}/openfpga_arch/k6_frac_N8_40nm_openfpga.xml  --openfpga_shell_template ../../../../../common/OpenFPGA/myscript.openfpga --openfpga_sim_setting_file ${{OPENFPGA_FLOW_PATH}}/openfpga_simulation_settings/fixed_sim_openfpga.xml".format(self.top, self.target)

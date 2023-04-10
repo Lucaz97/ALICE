@@ -23,3 +23,7 @@ And the python interpreter for openfpga at OPENFPGA_PY_INT:
     export OPENFPGA_PY_INT=path/to/python/env
 If you did not make a python environment for OpenFPGA, 
     export OPENFPGA_PY_INT=python3
+
+And the RTL_REDACTION_PATH
+    While in the root folder of this repo:
+    export RTL_REDACTION_PATH=$PWD
