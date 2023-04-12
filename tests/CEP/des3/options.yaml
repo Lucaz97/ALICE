@@ -10,7 +10,7 @@ file_list:
 - src/sbox3.v
 - src/sbox4.v
 - src/sbox5.v
-- src/sbox6.v-
+- src/sbox6.v
 - src/sbox7.v
 - src/sbox8.v
 max_fpga_num: 1
