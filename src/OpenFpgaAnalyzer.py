@@ -24,7 +24,7 @@ class OpenFpgaAnalyzer:
         command += " " + self.verilog_file
         command += " --top_module " + self.top
         command += " --run_dir " + self.target
-        command += " " + self.cfg.openfpga_arch
+        command += " --openfpga_arch_file " + self.cfg.openfpga_arch
         #command += " --openfpga_arch_file ${OPENFPGA_FLOW_PATH}/openfpga_arch/k4_N4_40nm_cc_openfpga.xml"
         #command += " --openfpga_arch_file ${OPENFPGA_FLOW_PATH}/openfpga_arch/jb_k4_frac_N8.xml"
         #command += " --openfpga_shell_template ../../../../../common/OpenFPGA/myscript.openfpga"
