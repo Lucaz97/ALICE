@@ -2,7 +2,7 @@ define: [] # macro definitions
 exclude_modules: []
 include: [] # include path
 file_list: # list of files to parse
-- FIR_filter.v
+- src/FIR_filter.v
 max_fpga_num: '1'
 max_io_num: '96'
 method: io+module # or io+out+rank

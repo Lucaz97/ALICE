@@ -1,0 +1,14 @@
+define: []
+exclude_modules: []
+include: []
+file_list:
+- src/gcd.v
+max_fpga_num: '2'
+max_io_num: '64'
+method: io+out+rank
+module_names: []
+not_allowed_size: null
+out_dir: work
+rank: '1'
+signal_names: outputs
+topmodule: gcd
