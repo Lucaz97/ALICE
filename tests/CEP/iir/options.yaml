@@ -12,5 +12,5 @@ out_dir: work
 rank: '1'
 signal_names: outfile
 topmodule: IIR_filter
-openfpga_arch: ${OPENFPGA_FLOW_PATH}/openfpga_arch/k4_N4_40nm_cc_openfpga.xml
+openfpga_arch: ${OPENFPGA_FLOW_PATH}/openfpga_arch/k4_frac_N4_40nm_cc_openfpga.xml
 vpr_arch: ${OPENFPGA_FLOW_PATH}/vpr_arch/k4_frac_N4_40nm.xml
