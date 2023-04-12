@@ -1,4 +1,9 @@
+
+
 # rtl_redaction
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Lucaz97/RTL-eFPGA-redaction/main?urlpath=vscode)
+
 RTL redaction for eFPGA implementation
 
 
