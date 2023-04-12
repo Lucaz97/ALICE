@@ -4,6 +4,7 @@ include: []
 file_list:
 - src/sha256.v
 - src/sha256_k_constants.v 
+- src/sha256_w_mem.v
 max_fpga_num: '2'
 max_io_num: '96'
 method: io+out+rank
