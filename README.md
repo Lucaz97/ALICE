@@ -2,7 +2,7 @@
 
 # ALICE: An automatic design flow for eFPGA redaction
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Lucaz97/RTL-eFPGA-redaction/main?urlpath=vscode)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Lucaz97/ALICE/main?urlpath=vscode)
 
 ALICE is a framework for eFPGA redaction. It helps identifying the best module combination to fit on the eFPGA with the fabric of your choice. you can either specify the relevant modules or select what outputs you want to protect and let ALICE do the work. 
 
