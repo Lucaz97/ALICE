@@ -35,6 +35,11 @@ While in the root folder of this repo:
 
     export RTL_REDACTION_PATH=$PWD
 
+If you want to try ALICE without committing to set up OpenFPGA yourself, you can open a ready to run binder by clicking on the Binder button at the top of this README. 
+The binder will load our docker file taken from [OpenFPGA](https://github.com/lnis-uofu/OpenFPGA) and clone the later version of this repo. You can then cd in this repo and play with ALICE!
+
+If you are familiar with Docker, you can also run the container locally on your machine.
+
 # Run ALICE:
 You can run one of our tests by entering in the specific test folder and run make. By default we read the options.yaml file, you can specify another yaml option file with the flag -f. 
 
@@ -42,11 +47,7 @@ Example from ALICE main folder:
 
     cd tests/CEP/fir
     make
-
-If you want to try ALICE without committing to set up OpenFPGA yourself, you can open a ready to run binder by clicking on the Binder button at the top of this README. 
-The binder will load our docker file taken from [OpenFPGA](https://github.com/lnis-uofu/OpenFPGA) and clone the later version of this repo. You can then cd in this repo and play with ALICE!
-
-If you are familiar with Docker, you can also run the container locally on your machine. 
+ 
 
 ## Configuration File
 For a reference configuration file, please refer to tests/CEP/fir/options.yaml
