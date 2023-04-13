@@ -7,7 +7,11 @@
 ALICE is a framework for eFPGA redaction. It helps identifying the best module combination to fit on the eFPGA with the fabric of your choice. you can either specify the relevant modules or select what outputs you want to protect and let ALICE do the work. 
 
 If you use our tool for your research please cite us! 
-    Tomajoli, C. M., Collini, L., Bhandari, J., Moosa, A. K. T., Tan, B., Tang, X., Gaillardon, P. E., Karri, R., & Pilato, C. (2022). ALICE: An Automatic Design Flow for eFPGA Redaction. In Proceedings of the 59th ACM/IEEE Design Automation Conference, DAC 2022 (pp. 781-786). (Proceedings - Design Automation Conference). Institute of Electrical and Electronics Engineers Inc.. https://doi.org/10.1145/3489517.3530543
+
+    Tomajoli, C. M., Collini, L., Bhandari, J., Moosa, A. K. T., Tan, B., Tang, X., Gaillardon, P. E., Karri, R., & Pilato, C. (2022). 
+    ALICE: An Automatic Design Flow for eFPGA Redaction. In Proceedings of the 59th ACM/IEEE Design Automation Conference,
+    DAC 2022 (pp. 781-786). (Proceedings - Design Automation Conference). Institute of Electrical and Electronics Engineers Inc..  
+    https://doi.org/10.1145/3489517.3530543
 
 [OPEN ACCESS PAPER PDF](https://arxiv.org/pdf/2205.07425.pdf)
 
