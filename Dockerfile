@@ -64,4 +64,4 @@ RUN echo 'alias codeopen="code-server -r "' >> ~/.bashrc
 RUN mkdir -p .vscode && echo '{"files.associations": {"*.openfpga": "shellscript"},"workbench.colorTheme": "Monokai"}' > .vscode/settings.json
 RUN echo 'export OPENFPGA_FLOW_PATH=$PWD/openfpga_flow' >> ~/.bashrc
 RUN echo 'export OPENFPGA_PY_INT=python3' >> ~/.bashrc
-RUN echo 'export RTL_REDACTION_PATH=$PWD/RTL-eFPGA-redaction' >> ~/.bashrc
+RUN echo 'export RTL_REDACTION_PATH=$PWD/ALICE' >> ~/.bashrc
