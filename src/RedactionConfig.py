@@ -14,7 +14,7 @@ class RedactionConfig:
         if yaml_opt["not_allowed_size"]:
             self.not_allowed_size = yaml_opt["not_allowed_size"]
         else:
-            self.not_allowed_size.append(4)
+            self.not_allowed_size.append(3)
         self.module_names = yaml_opt["module_names"]
         self.signal_names = []
         if yaml_opt["signal_names"]:
