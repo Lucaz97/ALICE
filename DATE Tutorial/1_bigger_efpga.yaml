@@ -4,7 +4,7 @@ exclude_modules: []
 include: []
 file_list:
 - ../tests/openroad/gcd/src/gcd.v
-max_fpga_num: '2' # 2 efpgas 
+max_fpga_num: '1' # 2 efpgas 
 max_io_num: '96' # 64 is the max IO for a 4x4
 method: io+module # filter by io count, output signal
 module_names: [GcdUnitDpathRTL_0x4d0fc71ead8d3d9e] # we want to look into the data path module only
