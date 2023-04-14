@@ -1,0 +1,16 @@
+define: []
+exclude_modules: []
+include: []
+file_list:
+- ../../tests/openroad/gcd/src/gcd.v
+max_fpga_num: '2' # 2 efpgas 
+max_io_num: '64' # 64 is the max IO for a 4x4
+method: io+out+rank # filter by io count, output signal
+module_names: []
+not_allowed_size: [5,6,7] # we want a 4x4
+out_dir: work
+rank: '1'
+signal_names: outputs
+topmodule: gcd
+openfpga_arch: ${OPENFPGA_FLOW_PATH}/openfpga_arch/k4_frac_N4_40nm_cc_openfpga.xml
+vpr_arch: ${OPENFPGA_FLOW_PATH}/vpr_arch/k4_frac_N4_40nm.xml
