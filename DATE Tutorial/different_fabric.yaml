@@ -3,7 +3,7 @@ define: []
 exclude_modules: []
 include: []
 file_list:
-- ../../tests/openroad/gcd/src/gcd.v
+- ../tests/openroad/gcd/src/gcd.v
 max_fpga_num: '1' # 2 efpgas 
 max_io_num: '96' # 64 is the max IO for a 4x4
 method: io+module # filter by io count, output signal
@@ -14,4 +14,4 @@ rank: '1'
 signal_names: outputs
 topmodule: gcd
 openfpga_arch: ${OPENFPGA_FLOW_PATH}/openfpga_arch/k6_frac_N8_40nm_openfpga.xml
-vpr_arch: ${OPENFPGA_FLOW_PATH}/vpr_arch/k6_frac_N8_tileable_40nm.xml
+vpr_arch: ${OPENFPGA_FLOW_PATH}/vpr_arch/k6_frac_N8_tileable_40nm.xml 

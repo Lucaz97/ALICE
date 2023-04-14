@@ -2,7 +2,7 @@ define: []
 exclude_modules: []
 include: []
 file_list:
-- ../../tests/openroad/gcd/src/gcd.v
+- ../tests/openroad/gcd/src/gcd.v
 max_fpga_num: '2' # 2 efpgas 
 max_io_num: '64' # 64 is the max IO for a 4x4
 method: io+out+rank # filter by io count, output signal
