@@ -1,11 +1,11 @@
-# we are aiming to find 2 4x4 efpgas
+# we are aiming to find 1 5x5 efpga
 define: []
 exclude_modules: []
 include: []
 file_list:
 - ../tests/openroad/gcd/src/gcd.v
-max_fpga_num: '1' # 2 efpgas 
-max_io_num: '96' # 64 is the max IO for a 4x4
+max_fpga_num: '1' # 1 efpga
+max_io_num: '96' # 96 is the max IO for a 5x5
 method: io+module # filter by io count, output signal
 module_names: [GcdUnitDpathRTL_0x4d0fc71ead8d3d9e] # we want to look into the data path module only
 not_allowed_size: [3,4,6,7,8] # we are aiming at a 5x5
